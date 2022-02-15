@@ -4,22 +4,23 @@ import MeuEstilo from './src/style'
 
 export default class App extends React.Component{
   state={
-    valor1: 0.0,
-    valor2: 0.0,
-    resultado: 0.0
+    quanticarne: 0.0,
+    quantiqueijo: 0.0,
+    resultado: 0.0,
   }
 
-  atualizaValor1=(number)=>{
-    this.setState({valor1:number})
+  atualizaquanticarne=(number)=>{
+    this.setState({quanticarne:number})
   }
 
-  atualizaValor2=(number)=>{
-    this.setState({valor2:number})
+  atualizaquantiqueijo=(number)=>{
+    this.setState({quantiqueijo:number})
   }
 
-  soma(){
-    this.state.resultado=parseFloat(this.state.valor1) + 
-    parseFloat(this.state.valor2)
+  soma( quantiqueijo, quanticarne){
+    const precocarne = 5.0
+    const precoqueijo = 3.0
+    this.state.resultado=parseFloat(quanticarne * precocarne) + parseFloat(quantiqueijo * precoqueijo)
     alert (this.state.resultado)
   }
 
@@ -33,7 +34,7 @@ export default class App extends React.Component{
           underlineColorAndroid="transparent"
           placeholder="0"
           autoCapitalize="none"
-          onChangeText={this.atualizaValor1}
+          onChangeText={this.atualizaquanticarne}
           keyboardType="numeric"
          />
 
@@ -43,13 +44,13 @@ export default class App extends React.Component{
           underlineColorAndroid="transparent"
           placeholder="0"
           autoCapitalize="none"
-          onChangeText={this.atualizaValor2}
+          onChangeText={this.atualizaquantiqueijo}
           keyboardType="numeric"
          />
 
          <TouchableOpacity style={MeuEstilo.submitButton}
           onPress={()=>{
-            this.soma(this.state.valor1, this.state.valor2, this.state.resultado)
+            this.soma(this.state.quanticarne, this.state.quantiqueijo)
           }}>
           <Text style={MeuEstilo.submitButtonText}>Calcular</Text>
           </TouchableOpacity>
