@@ -1,58 +1,111 @@
 import * as React from 'react'
 import {Text, TouchableOpacity, TextInput, View, StatusBar} from 'react-native'
-import MeuEstilo from './src/style'
+import style from './src/style'
 
 export default class App extends React.Component{
+  
   state={
-    quanticarne: 0.0,
-    quantiqueijo: 0.0,
-    resultado: 0.0,
+    carne: 0.0,
+    queijo: 0.0,
+    strogonoff: 0.0,
+    
+    lata: 0,
+    seiscentos: 0,
+    litro: 0
   }
 
-  atualizaquanticarne=(number)=>{
-    this.setState({quanticarne:number})
+  setCarne=(number)=>{
+    this.setState({carne:number})
   }
 
-  atualizaquantiqueijo=(number)=>{
-    this.setState({quantiqueijo:number})
+  setQueijo=(number)=>{
+    this.setState({queijo:number})
   }
 
-  soma( quantiqueijo, quanticarne){
-    const precocarne = 5.0
-    const precoqueijo = 3.0
-    this.state.resultado=parseFloat(quanticarne * precocarne) + parseFloat(quantiqueijo * precoqueijo)
-    alert (this.state.resultado)
+  setStrogonoff=(number)=>{
+    this.setState({strogonoff:number})
+  }
+
+  setLata=(number)=>{
+    this.setState({lata:number})
+  }
+
+  setSeiscentos=(number)=>{
+    this.setState({seiscentos:number})
+  }
+
+  setLitro=(number)=>{
+    this.setState({litro:number})
   }
 
   render(){
     return(
-      <View style={MeuEstilo.container}>
+      <View style={style.container}>
+
       <StatusBar backgroundColor="black"/>
-
         <Text>Pastel de Carne R$ 5,00</Text>
-        <TextInput style={MeuEstilo.input}
+        <TextInput style={style.input}
           underlineColorAndroid="transparent"
           placeholder="0"
           autoCapitalize="none"
-          onChangeText={this.atualizaquanticarne}
+          onChangeText={this.setCarne}
           keyboardType="numeric"
          />
 
-        <StatusBar backgroundColor="black"/>
+      <StatusBar backgroundColor="black"/>
         <Text>Pastel de Queijo R$ 3,00</Text>
-        <TextInput style={MeuEstilo.input}
-          underlineColorAndroid="transparent"
-          placeholder="0"
-          autoCapitalize="none"
-          onChangeText={this.atualizaquantiqueijo}
-          keyboardType="numeric"
+          <TextInput style={style.input}
+            underlineColorAndroid="transparent"
+            placeholder="0"
+            autoCapitalize="none"
+            onChangeText={this.setQueijo}
+            keyboardType="numeric"
          />
 
-         <TouchableOpacity style={MeuEstilo.submitButton}
+      <StatusBar backgroundColor="black"/>
+        <Text>Pastel de Strogonoff R$ WIP</Text>
+          <TextInput style={style.input}
+            underlineColorAndroid="transparent"
+            placeholder="0"
+            autoCapitalize="none"
+            onChange={(event)=>{this.setStrogonoff *= event.target.value}}
+            keyboardType="numeric"
+         />
+      <StatusBar backgroundColor="black"/>
+        <Text>Refri Lata R$ WIP</Text>
+          <TextInput style={style.input}
+            underlineColorAndroid="transparent"
+            placeholder="0"
+            autoCapitalize="none"
+            onChangeText={this.setLata}
+            keyboardType="numeric"
+         />
+      <StatusBar backgroundColor="black"/>
+        <Text>Refri 600ml R$ WIP</Text>
+          <TextInput style={style.input}
+            underlineColorAndroid="transparent"
+            placeholder="0"
+            autoCapitalize="none"
+            onChangeText={this.setSeiscentos}
+            keyboardType="numeric"
+         />
+      <StatusBar backgroundColor="black"/>
+        <Text>Refri 2L R$ WIP</Text>
+          <TextInput style={style.input}
+            underlineColorAndroid="transparent"
+            placeholder="0"
+            autoCapitalize="none"
+            onChangeText={this.setLitro}
+            keyboardType="numeric"
+         />
+
+
+
+         <TouchableOpacity style={style.submitButton}
           onPress={()=>{
-            this.soma(this.state.quanticarne, this.state.quantiqueijo)
+            console.log(this.setStrogonoff)
           }}>
-          <Text style={MeuEstilo.submitButtonText}>Calcular</Text>
+          <Text style={style.submitButtonText}>Calcular</Text>
           </TouchableOpacity>
       </View>
     )
