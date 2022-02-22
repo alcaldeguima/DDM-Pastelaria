@@ -4,6 +4,16 @@ import style from './src/style'
 
 export default class App extends React.Component{
   
+  precos={
+    carne: 5.0,
+    queijo: 6.5,
+    strogonoff: 8.0,
+    
+    lata: 2.5,
+    seiscentos: 4.0,
+    litro: 5.5
+  }
+
   state={
     carne: 0.0,
     queijo: 0.0,
@@ -48,7 +58,7 @@ export default class App extends React.Component{
           underlineColorAndroid="transparent"
           placeholder="0"
           autoCapitalize="none"
-          onChangeText={this.setCarne}
+          onChange={(event)=>{this.setCarne=parseFloat(event.target.value *  this.precos.carne)}}
           keyboardType="numeric"
          />
 
@@ -58,7 +68,7 @@ export default class App extends React.Component{
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
-            onChangeText={this.setQueijo}
+            onChange={(event)=>{this.setQueijo=parseFloat(event.target.value *  this.precos.queijo)}}
             keyboardType="numeric"
          />
 
@@ -68,7 +78,7 @@ export default class App extends React.Component{
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
-            onChange={(event)=>{this.setStrogonoff *= event.target.value}}
+            onChange={(event)=>{this.setStrogonoff=parseFloat(event.target.value *  this.precos.strogonoff)}}
             keyboardType="numeric"
          />
       <StatusBar backgroundColor="black"/>
@@ -77,7 +87,7 @@ export default class App extends React.Component{
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
-            onChangeText={this.setLata}
+            onChange={(event)=>{this.setLata=parseFloat(event.target.value *  this.precos.lata)}}
             keyboardType="numeric"
          />
       <StatusBar backgroundColor="black"/>
@@ -86,7 +96,7 @@ export default class App extends React.Component{
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
-            onChangeText={this.setSeiscentos}
+            oonChange={(event)=>{this.setSeiscentos=parseFloat(event.target.value *  this.precos.seiscentos)}}
             keyboardType="numeric"
          />
       <StatusBar backgroundColor="black"/>
@@ -95,15 +105,13 @@ export default class App extends React.Component{
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
-            onChangeText={this.setLitro}
+            onChange={(event)=>{this.setLitro=parseFloat(event.target.value *  this.precos.litro)}}
             keyboardType="numeric"
          />
 
-
-
          <TouchableOpacity style={style.submitButton}
           onPress={()=>{
-            console.log(this.setStrogonoff)
+            console.log(this.setStrogonoff, this.strogonoff)
           }}>
           <Text style={style.submitButtonText}>Calcular</Text>
           </TouchableOpacity>
