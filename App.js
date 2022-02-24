@@ -4,6 +4,19 @@ import style from './src/style'
 
 export default class App extends React.Component{
   
+
+
+   produtos=[ 'carne', 'queijo', 'strogonoff', 'lata', 'seiscentos', 'litro']
+
+  set = produtos.map((produto)=>{
+    setProduto=(number)=>{
+      this.setState({produto:number})
+    }
+  })
+
+
+
+
   precos={
     carne: 5.0,
     queijo: 6.5,
@@ -48,6 +61,11 @@ export default class App extends React.Component{
     this.setState({litro:number})
   }
 
+  soma(state){
+    output= parseFloat(this.state.carne + this.state.queijo + this.state)
+    return 
+  }
+
   render(){
     return(
       <View style={style.container}>
@@ -58,7 +76,7 @@ export default class App extends React.Component{
           underlineColorAndroid="transparent"
           placeholder="0"
           autoCapitalize="none"
-          onChange={(event)=>{this.setCarne=parseFloat(event.target.value *  this.precos.carne)}}
+          onChange={(event)=>{this.setCarne(parseFloat(event.target.value *  this.precos.carne))}}
           keyboardType="numeric"
          />
 
@@ -111,7 +129,9 @@ export default class App extends React.Component{
 
          <TouchableOpacity style={style.submitButton}
           onPress={()=>{
-            console.log(this.setStrogonoff, this.strogonoff)
+            
+
+
           }}>
           <Text style={style.submitButtonText}>Calcular</Text>
           </TouchableOpacity>
