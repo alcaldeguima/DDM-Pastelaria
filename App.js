@@ -1,25 +1,13 @@
 import * as React from 'react'
 import {Text, TouchableOpacity, TextInput, View, StatusBar} from 'react-native'
+import { Modal } from 'react-native-web'
 import style from './src/style'
 
 export default class App extends React.Component{
   
-
-
-   produtos=[ 'carne', 'queijo', 'strogonoff', 'lata', 'seiscentos', 'litro']
-
-  set = produtos.map((produto)=>{
-    setProduto=(number)=>{
-      this.setState({produto:number})
-    }
-  })
-
-
-
-
   precos={
     carne: 5.0,
-    queijo: 6.5,
+    queijo: 3.0,
     strogonoff: 8.0,
     
     lata: 2.5,
@@ -32,9 +20,9 @@ export default class App extends React.Component{
     queijo: 0.0,
     strogonoff: 0.0,
     
-    lata: 0,
-    seiscentos: 0,
-    litro: 0
+    lata: 0.0,
+    seiscentos: 0.0,
+    litro: 0.0
   }
 
   setCarne=(number)=>{
@@ -61,17 +49,12 @@ export default class App extends React.Component{
     this.setState({litro:number})
   }
 
-  soma(state){
-    output= parseFloat(this.state.carne + this.state.queijo + this.state)
-    return 
-  }
-
   render(){
     return(
-      <View style={style.container}>
+      <View style={style.container}>  
 
       <StatusBar backgroundColor="black"/>
-        <Text>Pastel de Carne R$ 5,00</Text>
+        <Text style={style.font}>Pastel de Carne R$ 5,00</Text>
         <TextInput style={style.input}
           underlineColorAndroid="transparent"
           placeholder="0"
@@ -79,59 +62,64 @@ export default class App extends React.Component{
           onChange={(event)=>{this.setCarne(parseFloat(event.target.value *  this.precos.carne))}}
           keyboardType="numeric"
          />
-
       <StatusBar backgroundColor="black"/>
-        <Text>Pastel de Queijo R$ 3,00</Text>
+        <Text style={style.font}>Pastel de Queijo R$ 3,00</Text>
           <TextInput style={style.input}
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
-            onChange={(event)=>{this.setQueijo=parseFloat(event.target.value *  this.precos.queijo)}}
+            onChange={(event)=>{this.setQueijo(parseFloat(event.target.value *  this.precos.queijo))}}
             keyboardType="numeric"
          />
 
       <StatusBar backgroundColor="black"/>
-        <Text>Pastel de Strogonoff R$ WIP</Text>
+        <Text style={style.font}>Pastel de Strogonoff R$ 8,00</Text>
           <TextInput style={style.input}
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
-            onChange={(event)=>{this.setStrogonoff=parseFloat(event.target.value *  this.precos.strogonoff)}}
+            onChange={(event)=>{this.setStrogonoff(parseFloat(event.target.value *  this.precos.strogonoff))}}
             keyboardType="numeric"
          />
       <StatusBar backgroundColor="black"/>
-        <Text>Refri Lata R$ WIP</Text>
+        <Text style={style.font}>Refri Lata R$ 2,50</Text>
           <TextInput style={style.input}
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
-            onChange={(event)=>{this.setLata=parseFloat(event.target.value *  this.precos.lata)}}
+            onChange={(event)=>{this.setLata(parseFloat(event.target.value *  this.precos.lata))}}
             keyboardType="numeric"
          />
       <StatusBar backgroundColor="black"/>
-        <Text>Refri 600ml R$ WIP</Text>
+        <Text style={style.font}>Refri 600ml R$ 4,00</Text>
           <TextInput style={style.input}
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
-            oonChange={(event)=>{this.setSeiscentos=parseFloat(event.target.value *  this.precos.seiscentos)}}
+            onChange={(event)=>{this.setSeiscentos(parseFloat(event.target.value *  this.precos.seiscentos))}}
             keyboardType="numeric"
          />
       <StatusBar backgroundColor="black"/>
-        <Text>Refri 2L R$ WIP</Text>
+        <Text style={style.font}>Refri 2L R$ 5,50</Text>
           <TextInput style={style.input}
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
-            onChange={(event)=>{this.setLitro=parseFloat(event.target.value *  this.precos.litro)}}
+            onChange={(event)=>{this.setLitro(parseFloat(event.target.value *  this.precos.litro))}}
             keyboardType="numeric"
          />
 
          <TouchableOpacity style={style.submitButton}
           onPress={()=>{
-            
+            const result = 
+             this.state.carne +
+             this.state.queijo +
+             this.state.strogonoff +
+             this.state.lata +
+             this.state.seiscentos + 
+             this.state.litro
 
-
+           alert(`o preço final é ${result}`)
           }}>
           <Text style={style.submitButtonText}>Calcular</Text>
           </TouchableOpacity>
