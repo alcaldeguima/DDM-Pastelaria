@@ -1,6 +1,5 @@
 import * as React from 'react'
 import {Text, TouchableOpacity, TextInput, View, StatusBar} from 'react-native'
-import { Modal } from 'react-native-web'
 import style from './src/style'
 
 export default class App extends React.Component{
