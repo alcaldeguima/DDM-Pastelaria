@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {Text, TouchableOpacity, TextInput, View, StatusBar} from 'react-native'
+import * as Speech from 'expo-speech';
 import style from './src/style'
 
 export default class App extends React.Component{
@@ -119,6 +120,8 @@ export default class App extends React.Component{
              this.state.litro
 
            alert(`o preço final é ${result}`)
+           Speech.speak (`Você consumiu ${this.state.carne + this.state.queijo + this.state.strogonoff} Reais em pastel e ${this.state.lata + this.state.seiscentos + this.state.litro} Reais em Refrigerante, resultando ${result} Reais`, {
+            language: 'pt-BR'});
           }}>
           <Text style={style.submitButtonText}>Calcular</Text>
           </TouchableOpacity>
