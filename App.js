@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {Text, TouchableOpacity, TextInput, View, StatusBar} from 'react-native'
-import { Modal } from 'react-native-web'
 import style from './src/style'
+import Teste from './Components/Input/handleTeste'
 
 export default class App extends React.Component{
   
@@ -22,7 +22,9 @@ export default class App extends React.Component{
     
     lata: 0.0,
     seiscentos: 0.0,
-    litro: 0.0
+    litro: 0.0,
+
+    teste: 0
   }
 
   setCarne=(number)=>{
@@ -49,22 +51,33 @@ export default class App extends React.Component{
     this.setState({litro:number})
   }
 
+  setTeste=(number)=>{
+    this.setState({teste:number})
+  }
+
   render(){
     return(
       <View style={style.container}>  
-
+      <Teste 
+      desc="0-90m"
+     
+      />
+      
       <StatusBar backgroundColor="black"/>
         <Text style={style.font}>Pastel de Carne R$ 5,00</Text>
-        <TextInput style={style.input}
+        <TextInput
+          style={style.inputs}
           underlineColorAndroid="transparent"
           placeholder="0"
           autoCapitalize="none"
           onChange={(event)=>{this.setCarne(parseFloat(event.target.value *  this.precos.carne))}}
           keyboardType="numeric"
          />
+
+
       <StatusBar backgroundColor="black"/>
         <Text style={style.font}>Pastel de Queijo R$ 3,00</Text>
-          <TextInput style={style.input}
+          <TextInput style={style.inputs}
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
@@ -74,16 +87,20 @@ export default class App extends React.Component{
 
       <StatusBar backgroundColor="black"/>
         <Text style={style.font}>Pastel de Strogonoff R$ 8,00</Text>
-          <TextInput style={style.input}
+          <TextInput style={style.inputs}
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
             onChange={(event)=>{this.setStrogonoff(parseFloat(event.target.value *  this.precos.strogonoff))}}
             keyboardType="numeric"
+         
+         
+         
+         
          />
       <StatusBar backgroundColor="black"/>
         <Text style={style.font}>Refri Lata R$ 2,50</Text>
-          <TextInput style={style.input}
+          <TextInput style={style.inputs}
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
@@ -92,7 +109,7 @@ export default class App extends React.Component{
          />
       <StatusBar backgroundColor="black"/>
         <Text style={style.font}>Refri 600ml R$ 4,00</Text>
-          <TextInput style={style.input}
+          <TextInput style={style.inputs}
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
@@ -101,7 +118,7 @@ export default class App extends React.Component{
          />
       <StatusBar backgroundColor="black"/>
         <Text style={style.font}>Refri 2L R$ 5,50</Text>
-          <TextInput style={style.input}
+          <TextInput style={style.inputs}
             underlineColorAndroid="transparent"
             placeholder="0"
             autoCapitalize="none"
@@ -119,7 +136,8 @@ export default class App extends React.Component{
              this.state.seiscentos + 
              this.state.litro
 
-           alert(`o preço final é ${result}`)
+           //alert(`o preço final é ${result}`)
+           alert(this.state.teste)
           }}>
           <Text style={style.submitButtonText}>Calcular</Text>
           </TouchableOpacity>

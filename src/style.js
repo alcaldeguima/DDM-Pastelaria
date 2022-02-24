@@ -16,7 +16,7 @@ export default StyleSheet.create({
       
     },
 
-    input:{
+    inputs:{
         margin:15,
         height:40,
         width:500,
