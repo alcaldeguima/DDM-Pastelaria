@@ -120,7 +120,7 @@ export default class App extends React.Component{
 
            alert(`o preço final é ${result}`)
           }}>
-          <Text style={style.submitButtonText}>Calcular</Text>
+          <Text style={style.submitButtonText}>CALCULAR</Text>
           </TouchableOpacity>
       </View>
     )

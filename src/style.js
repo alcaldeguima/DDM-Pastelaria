@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native'
 export default StyleSheet.create({
     font:{
-        fontSize:20,
+        fontSize:18,
         color:'#111111',
         flexGrow:1,
         justifyContent:"center",
